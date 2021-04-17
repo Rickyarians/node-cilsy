@@ -1,15 +1,26 @@
 // panggil module http
 const http = require('http')
+// panggil module filesystem
 const fs = require('fs')
+// panggil module url
 const url = require('url')
 
 
+// kita buat server, ada request dan response
 const server = http.createServer((req, res) => {
 
+
+    // cetak url parse 
+    // parameter 1 itu ada url
+    // paramater 2
     const q = url.parse(req.url, true)
+    // cetak q
+    console.log(q)
+
 
     if(q.pathname = '/search/' && req.method === "GET") {
 
+        // tangkap query nama
         const nama = q.query.nama
         console.log(nama)
 
@@ -41,7 +52,7 @@ const server = http.createServer((req, res) => {
     // res.end();
 })
 
-
+// jalanin atau liste server di port 3000
 server.listen(3000)
 
 console.log('server jalan')

@@ -1,8 +1,14 @@
 const http = require('http');
 const qs = require('querystring');
 const fs = require('fs');
+
 http.createServer(function (req, res) {
+
+    //tankep url
     console.log(req.url)
+    // tangkep method
+    console.log(req.method)
+
             if(req.url === "/login/" && req.method === "GET"){
 
                     // tampilkan form login
@@ -44,6 +50,8 @@ http.createServer(function (req, res) {
                 // cek login
                 if( formData.username === "sekolahfullstack" &&
                formData.password === "kopi"){
+                
+                // kalo berhasil benar username dan password
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.write('<h2>Selamat datang bos!</h2> ');
                 res.write('<p>username:'+formData.username+'</p>');
@@ -51,6 +59,7 @@ http.createServer(function (req, res) {
                 res.write("<a href='/login/'>kembali</a>");
                 res.end();
                 } else {
+                // kalo salah username dan password
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.write('<h2>Login Gagal!</h2> ');
                 res.write("<a href='/login/'>coba lagi</a>");
